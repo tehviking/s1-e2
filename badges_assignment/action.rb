@@ -5,7 +5,7 @@ class Action
   attr_accessor :count
   attr_accessor :user
   
-  ACHIEVEMENTS = {['commit', 10] => '10th commit', ['fork', 5] => '5th fork'}
+  ACHIEVEMENTS = {['commit', 10] => '10th commit', ['fork', 5] => '5th fork', ['issue', 15] => 'problem solver'}
   
   def initialize(type, count, user)
     @type = type

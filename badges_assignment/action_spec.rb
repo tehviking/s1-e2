@@ -38,4 +38,15 @@ describe Action do
       @user.achievements.should include '5th fork'
     end
   end
+  
+  describe "when you've resolved your 15th issue" do
+    before(:each) do
+      @user = User.new
+      @action = Action.new('issue', 15, @user)
+    end
+    
+    it "triggers a 15 issue achievement" do
+      @user.achievements.should include 'problem solver'
+    end
+  end
 end
