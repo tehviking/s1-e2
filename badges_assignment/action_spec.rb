@@ -1,5 +1,4 @@
 require 'action'
-require 'user'
 
 describe Action do
   describe "when an action is created" do
@@ -14,6 +13,10 @@ describe Action do
     
     it "assigns a count" do
       @action.count.should == 10
+    end
+    
+    it "adds the action to user.actions" do
+      @user.actions.should_not be_empty
     end
   end
   
@@ -48,5 +51,16 @@ describe Action do
     it "triggers a 15 issue achievement" do
       @user.achievements.should include 'problem solver'
     end
+  end
+  
+  describe "When an achievement isn't earned" do
+    before(:each) do
+      @user = User.new
+      @action = Action.new('commit', 9, @user)
+    end
+    
+    it "ignores the achievemnt" do
+      @user.achievements.should be_empty
+    end    
   end
 end

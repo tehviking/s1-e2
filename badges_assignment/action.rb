@@ -1,4 +1,4 @@
-require 'user'
+require 'badges_assignment'
 
 class Action
   attr_accessor :type
@@ -11,6 +11,7 @@ class Action
     @type = type
     @count = count
     @user = user
+    @user.actions << self
     self.add_achievement(@type, @count, @user) if self.triggers_achievement?
   end
   
